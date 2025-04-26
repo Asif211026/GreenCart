@@ -16,7 +16,7 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 //allow multiple origin
-const allowedOrigins = ['http://localhost:5173']
+const allowedOrigins = ['http://localhost:5173','https://green-cart-asifrazakhan0123-gmailcoms-projects.vercel.app']
 
 await connectDB()
 await connectCloudinary()
