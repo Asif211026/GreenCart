@@ -16,7 +16,11 @@ const app = express();
 const PORT = process.env.PORT || 4000;
 
 //allow multiple origin
-const allowedOrigins = ['http://localhost:5173','https://green-cart-asifrazakhan0123-gmailcoms-projects.vercel.app']
+const allowedOrigins = [
+    'http://localhost:5173',
+    'https://green-cart-asifrazakhan0123-gmailcoms-projects.vercel.app',
+    process.env.FRONTEND_URL // Add your production frontend URL here
+].filter(Boolean); // Remove any undefined values
 
 await connectDB()
 await connectCloudinary()
@@ -26,7 +30,18 @@ app.post('/stripe', express.raw({type: 'application/json'}),stripeWebhooks)
 //middleware
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({origin: allowedOrigins, credentials: true}));
+app.use(cors({
+    origin: function(origin, callback) {
+        // Allow requests with no origin (like mobile apps or curl requests)
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.indexOf(origin) === -1) {
+            console.log('Origin not allowed:', origin);
+            return callback(new Error('The CORS policy for this site does not allow access from the specified Origin.'), false);
+        }
+        return callback(null, true);
+    },
+    credentials: true
+}));
 
 app.get('/', (req, res) => res.send("Api is running..."));
 app.use('/api/user',userRouter)
