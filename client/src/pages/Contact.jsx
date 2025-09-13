@@ -71,11 +71,11 @@ const Contact = () => {
 
   const teamMembers = [
     {
-      name: 'Lokesh parteti',
+      name: 'Afzal Ali',
       role: 'Frontend Developer',
-      image: assets.parteti,
-      bio: 'Lokesh specializes in React and led the development of the user interface for GreenCart.',
-      email: 'lokeshparteti057@gmail.com'
+      image: assets.afzal,
+      bio: 'Afzal specializes in React and led the development of the user interface for GreenCart.',
+      email: 'afzalr690@gmail.com'
     },
     {
       name: 'Md Rahmat Ali',

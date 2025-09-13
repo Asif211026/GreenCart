@@ -2,6 +2,8 @@
 
 A simple project for managing a grocery shop. This project may include backend and/or frontend code for handling products, inventory, and orders.
 
+live link :- "https://green-cart-dun.vercel.app"
+
 ## Features
 - Product management
 - Inventory tracking
